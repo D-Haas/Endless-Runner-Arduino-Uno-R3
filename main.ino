@@ -123,12 +123,6 @@ void checar_colisao_e_desvio()
   }
 }
 
-void checar_desvio()
-
-{
-  
-}
-
 void gerar_barreira()
 // A cada intervalo aleatório de ciclos (dentro de certos limites)
 // cria-se uma barreira no cenário, em uma altura escolhida aleatoriamente
