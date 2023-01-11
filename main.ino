@@ -51,8 +51,7 @@ void loop()
 {
   mover_player();
   mover_barreiras();
-  checar_colisao();
-  checar_desvio();
+  checar_colisao_e_desvio();
   gerar_barreira();
   atualizar_tela();
   delay(tempo_de_ciclo);
@@ -100,23 +99,19 @@ void mover_barreiras()
   }
 }
 
-void checar_colisao()
+void checar_colisao_e_desvio()
 // Testa se existe uma barreira na posição exata do jogador
 // e caso sim, inicia-se a tela de game over
+// Caso o teste retorne negativo, checa se o player está passando por uma barreira,
+// então aumenta-se a pontuação e a velocidade do jogo
 {
   // Se houver uma barreira na posição do player
   if (cenario[posicao_h_player][posicao_v_player] == 1) {
     // Inicie a tela de game over
     game_over();
   }
-}
-
-void checar_desvio()
-// Checa se o player está passando por uma barreira, caso positivo
-// aumenta a pontuação e a velocidade do jogo
-{
   // Se houver barreira do lado do player
-  if (posicao_v_player == 0 && cenario[posicao_h_player][1] == 1 ||
+  else if (posicao_v_player == 0 && cenario[posicao_h_player][1] == 1 ||
      posicao_v_player == 1 && cenario[posicao_h_player][0] == 1 ) {
     // Adicione +1 para a pontuação
     pontuacao++;
@@ -126,6 +121,12 @@ void checar_desvio()
       tempo_de_ciclo -= 10;
     }
   }
+}
+
+void checar_desvio()
+
+{
+  
 }
 
 void gerar_barreira()
