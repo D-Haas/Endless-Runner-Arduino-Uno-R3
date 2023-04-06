@@ -62,15 +62,9 @@ void mover_player()
 {
   // Se o botão estiver pressionado
   if (!digitalRead(8)) {
-    // Se o player estiver no topo
-    if (posicao_v_player==0) {
-      // Mova o player para baixo
-      posicao_v_player=1;
-    // Caso contrário
-    } else {
-      // Mova-o para cima
-      posicao_v_player=0;
-    }
+    // Se o player estiver no topo, mova o player para baixo
+    // Caso contrário, mova-o para cima
+    posicao_v_player = posicao_v_player==0 ? 1 : 0;
   }
 }
 
